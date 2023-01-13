@@ -33,8 +33,6 @@ router.get('/card/:id', (req, res) => {
 router.post('/create/card', (req, res) => {
     const card = mongoose.model('hobby', cardSchema)
 
-    console.log(req.body.data)
-
     const newCard = new card(req.body.data)
 
     newCard.save()
