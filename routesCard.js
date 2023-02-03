@@ -29,6 +29,16 @@ router.get('/card/:id', (req, res) => {
     });
 })
 
+router.put('/card/update/:id', async (req, res) => {
+    const cards = mongoose.model('hobby', cardSchema)
+
+    cards.updateOne({_id: req.params.id}, {$set: {watch: req.body.data.watch}}, {upsert: true}).then((obj) => {
+        res.status(200).json('resu')
+    });
+
+
+})
+
 
 router.post('/create/card', (req, res) => {
     const card = mongoose.model('hobby', cardSchema)
@@ -39,4 +49,3 @@ router.post('/create/card', (req, res) => {
 })
 
 module.exports = router
-
