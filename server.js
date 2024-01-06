@@ -1,5 +1,6 @@
 import express from 'express'
 import cors from 'cors'
+import db from "./db.js";
 // import CardAdmin from "./models/cardAdmin.js";
 
 const app = express()
@@ -16,7 +17,10 @@ app.get('/', async (req, res) => {
 
 
 app.get('/test', async (req, res) => {
-    res.json('Hello world (test)')
+    const result = await db.query("SELECT * FROM item")
+    console.log(result)
+
+    res.json(result.rows)
 })
 
 // app.post('/api/admin-add-card', (req, res) => {
