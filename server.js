@@ -1,10 +1,6 @@
-const express = require('express')
-const mongoose = require('mongoose')
-const DB_URI = require('./config.js')
-const routerCard = require('./routesCard.js')
-const cors = require('cors');
-
-
+import express from 'express'
+import cors from 'cors'
+// import CardAdmin from "./models/cardAdmin.js";
 
 const app = express()
 
@@ -13,19 +9,31 @@ app.use(cors({
 }));
 
 app.use(express.json())
-app.use('/api', routerCard)
+
+app.get('/', async (req, res) => {
+    res.json('Hello world')
+})
+
+
+app.get('/test', async (req, res) => {
+    res.json('Hello world (test)')
+})
+
+// app.post('/api/admin-add-card', (req, res) => {
+//     CardAdmin.addCard(req.body.data)
+// })
+//
+// app.get('/api/cards', async (req, res) => {
+//     const response = await CardAdmin.getCards()
+//
+//     res.json(response)
+// })
+//
+// app.get('/api/card/:id', async (req, res) => {
+//     const response = await CardAdmin.getCard(req.params.id)
+//
+//     res.json(response)
+// })
 
 const PORT = 5000
-
-async function startApp() {
-    try {
-        await mongoose.connect(DB_URI, {useUnifiedTopology: true, useNewUrlParser: true})
-        app.listen(PORT, () => console.log('Работает...'))
-    } catch (e) {
-        console.log(e)
-    }
-}
-
-
-startApp()
-
+app.listen(PORT, () => console.log('Работает...'))
