@@ -15,10 +15,13 @@ app.get('/', async (req, res) => {
     res.json('Hello world')
 })
 
+app.get('/url', async (req, res) => {
+    res.json('Hello world2')
+})
+
 
 app.get('/test', async (req, res) => {
     const result = await db.query("SELECT * FROM item")
-    console.log(result)
 
     res.json(result.rows)
 })
