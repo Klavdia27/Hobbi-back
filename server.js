@@ -19,7 +19,7 @@ app.use(bodyParser())
 const upload = multer({ storage: storage });
 
 app.use(cors({
-    origin: 'http://localhost:3000'
+    origin: '*'
 }));
 
 app.use('/uploads', express.static('uploads'));
@@ -43,6 +43,9 @@ app.get('/api/cards', async (req, res) => {
 
 app.get('/', async (req, res) => {
     res.json('hello')
+})
+app.get('/dd', async (req, res) => {
+    res.json('dd')
 })
 
 app.get('/api/card/:id', async (req, res) => {
