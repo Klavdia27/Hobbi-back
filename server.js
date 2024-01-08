@@ -19,7 +19,7 @@ app.use(bodyParser())
 const upload = multer({ storage: storage });
 
 app.use(cors({
-    origin: '*'
+    origin: 'https://www.hobbi-nitki.ru/'
 }));
 
 app.use('/uploads', express.static('uploads'));
