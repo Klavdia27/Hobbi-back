@@ -41,6 +41,10 @@ app.get('/api/cards', async (req, res) => {
     res.json(response)
 })
 
+app.get('/', async (req, res) => {
+    res.json('hello')
+})
+
 app.get('/api/card/:id', async (req, res) => {
     const response = await CardAdmin.getCard(req.params.id)
 
